@@ -1,14 +1,20 @@
 1.	За допомогою download.file() завантажте любий excel файл з порталу http://data.gov.ua та зчитайте його (xls, xlsx – бінарні формати, тому встановить mode = “wb”. Виведіть перші 6 строк отриманого фрейму даних.
 ```r
 # change locale to ukrainian
+> fileURL <- "http://data.gov.ua/file/153481/download?token=kJ17wUAF"
 > Sys.setlocale(locale = "ukrainian")
-[1] "LC_COLLATE=Ukrainian_Ukraine.1251;LC_CTYPE=Ukrainian_Ukraine.1251;LC_MONETARY=Ukrainian_Ukraine.1251;LC_NUMERIC=C;LC_TIME=Ukrainian_Ukraine.1251"
-
-> fileURL <- "http://data.gov.ua/file/152588/download?token=Nk14ZhWf"
+[1] ""
+Warning message:
+In Sys.setlocale(locale = "ukrainian") :
+  OS reports request to set locale to "ukrainian" cannot be honored
+> Sys.setlocale(locale = "uk_UA")
+[1] "uk_UA/uk_UA/uk_UA/C/uk_UA/en_US.UTF-8"
+> fileURL <- "http://data.gov.ua/file/153481/download?token=kJ17wUAF"
 > download.file(fileURL, destfile = "data.xls", mode = "wb")
-trying URL 'http://data.gov.ua/file/152588/download?token=Nk14ZhWf'
-Content type 'application/vnd.ms-excel' length 324096 bytes (316 KB)
-downloaded 316 KB
+trying URL 'http://data.gov.ua/file/153481/download?token=kJ17wUAF'
+Content type 'application/vnd.ms-excel' length 31744 bytes (31 KB)
+==================================================
+downloaded 31 KB
 > data <- read.xlsx("data.xls", sheetIndex = 1, startRow=6, as.data.frame=TRUE, encoding = "UTF-8")
 > head(data)
   X1 Інформація Про.надання.списків.для.нагородження. X42739 X01.12.1 надання..список..нагородження
