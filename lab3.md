@@ -15,7 +15,7 @@ trying URL 'http://data.gov.ua/file/153481/download?token=kJ17wUAF'
 Content type 'application/vnd.ms-excel' length 31744 bytes (31 KB)
 ==================================================
 downloaded 31 KB
-> data <- read.xlsx("data.xls", sheetIndex = 1, startRow=6, as.data.frame=TRUE, encoding = "UTF-8")
+> data <- read.xlsx("data.xls", sheetIndex = 1, header = TRUE)
 > head(data)
   X1 Інформація Про.надання.списків.для.нагородження. X42739 X01.12.1 надання..список..нагородження
 1  2 Інформація                Про проблемні питання   42739  01-12/2             проблема, питання
